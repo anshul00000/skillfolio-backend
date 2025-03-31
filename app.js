@@ -56,13 +56,23 @@ const react_url = "http://localhost:5173";    //✔️
 
 
 // extra routs 
-const corsOptions = {
-  origin : react_url ,
-//  methods : "GET , POST , PUT , DELETE  , PATCH",
- methods : ["GET", "POST", "PUT", "DELETE", "PATCH"],
+// const corsOptions = {
+//   origin : react_url ,
+// //  methods : "GET , POST , PUT , DELETE  , PATCH",
+//  methods : ["GET", "POST", "PUT", "DELETE", "PATCH"],
 
- Credential : true ,
-} 
+//  Credential : true ,
+// } 
+
+
+// for all places 
+const corsOptions = {
+  origin: (origin, callback) => {
+    callback(null, true);
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  credentials: true,
+};
 
 app.use(cors(corsOptions));
 
